@@ -5,7 +5,7 @@ export default defineConfig({
   base: "./", // 确保相对路径正确
   server: {
     port: 3000,
-    open: true,
+    open: false,
     host: "0.0.0.0", // 支持局域网访问
   },
   build: {

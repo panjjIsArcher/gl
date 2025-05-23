@@ -6,6 +6,7 @@ export default class Render {
       const screenHeight = window.innerHeight;
       canvas.height = screenHeight;
       canvas.width = screenWidth;
+      this.gl = canvas.getContext("webgl");
       this.canvas = canvas;
     }
   }
