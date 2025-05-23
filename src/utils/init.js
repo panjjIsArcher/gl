@@ -24,6 +24,7 @@ export default class Render {
     const fragShader = gl.createShader(gl.FRAGMENT_SHADER);
     const fragShaderSource = fragment;
     gl.shaderSource(fragShader, fragShaderSource);
+    gl.compileShader(fragShader);
 
     const program = gl.createProgram();
     gl.attachShader(program, vecShader);
@@ -39,9 +40,9 @@ export default class Render {
     // 获取着色器中属性和统一变量的位置
     const positionAttributeLocation = gl.getAttribLocation(
       program,
-      "gl_Position"
+      "direcntion"
     );
-    const colorUniformLocation = gl.getUniformLocation(program, "gl_FragColor");
+    const colorUniformLocation = gl.getUniformLocation(program, "color");
 
     // 告诉 WebGL 如何从缓冲区读取数据到顶点着色器的属性
     gl.enableVertexAttribArray(positionAttributeLocation);
@@ -51,7 +52,7 @@ export default class Render {
     gl.useProgram(program);
 
     // 设置三角形颜色（RGBA）
-    gl.uniform4f(colorUniformLocation, 1.0, 0.0, 0.0, 1.0); // 红色
+    gl.uniform4f(colorUniformLocation, 1.0, 1.0, 0.0, 1.0);
 
     // 清除画布
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
