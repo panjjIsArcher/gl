@@ -2,6 +2,7 @@ import { cube, fragment } from "../model/cube";
 export default class Render {
   constructor(id = "gl") {
     const canvas = document.getElementById(id);
+    console.info(canvas.getContext("webgl"));
     if (canvas) {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
@@ -14,6 +15,7 @@ export default class Render {
   // 设置着色器
   setVec3() {
     const gl = this.gl;
+
     // 顶点着色器
     const vecShader = gl.createShader(gl.VERTEX_SHADER);
     const vecShaderSource = cube;
@@ -32,7 +34,7 @@ export default class Render {
     gl.linkProgram(program);
 
     // 创建缓冲区
-    const positions = [0.0, 0.5, -0.5, -0.5, 0.5, -0.5];
+    const positions = [0.0, 0.3, -0.5, -0.5, 0.5, -0.5];
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);

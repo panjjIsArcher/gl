@@ -1,5 +1,7 @@
 import "./style.css";
 import Render from "./utils/init";
-document.querySelector("#app").innerHTML = `<div><canvas id="gl" /></div>`;
+import Three from "./model/three";
+const instance = new Three("gl");
+
 const render = new Render("gl");
 render.setVec3();
