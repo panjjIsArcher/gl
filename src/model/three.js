@@ -6,6 +6,7 @@ import {
   Mesh,
   MeshBasicMaterial,
   DoubleSide,
+  ShaderMaterial,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
@@ -56,5 +57,13 @@ export default class Three {
     const control = new OrbitControls(this.camera, this.renderer.domElement);
     this.camera.position.set(0, 0, 1);
     this.fns.push(() => control.update());
+    return control;
+  }
+  createShaderMaterial(uniforms, vertexShader, fragmentShader) {
+    return new ShaderMaterial({
+      uniforms: uniforms || {},
+      vertexShader: vertexShader || "",
+      fragmentShader: fragmentShader || "",
+    });
   }
 }
