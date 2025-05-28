@@ -1,8 +1,7 @@
 import { cube, fragment } from "../model/cube";
 export default class Render {
   constructor(id = "gl") {
-    const canvas = document.getElementById(id);
-    console.info(canvas.getContext("webgl"));
+    const canvas = document.querySelector("#" + id);
     if (canvas) {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;

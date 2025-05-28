@@ -12,12 +12,19 @@ export default class Three {
       0.1,
       1000
     );
-    const renderer = new WebGLRenderer();
+    const renderer = new WebGLRenderer({
+      canvas: document.querySelector("#" + id),
+      antialias: true,
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.domElement.setAttribute("id", id);
     document.body.appendChild(renderer.domElement);
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
+    function render() {
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+    render();
   }
 }
