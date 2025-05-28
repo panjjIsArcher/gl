@@ -7,6 +7,7 @@ import {
   MeshBasicMaterial,
   DoubleSide,
   ShaderMaterial,
+  MathUtils,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
@@ -17,7 +18,7 @@ export default class Three {
   init(id) {
     const scene = new Scene();
     const camera = new PerspectiveCamera(
-      70,
+      75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
@@ -65,5 +66,12 @@ export default class Three {
       vertexShader: vertexShader || "",
       fragmentShader: fragmentShader || "",
     });
+  }
+  resizePlaneToFillScreen(plane) {
+    const distance = Math.abs(plane.position.z - this.camera.position.z);
+    const vFov = MathUtils.degToRad(this.camera.fov);
+    const height = 2 * Math.tan(vFov / 2) * distance;
+    const width = height * this.camera.aspect;
+    plane.scale.set(width, height, 1);
   }
 }
