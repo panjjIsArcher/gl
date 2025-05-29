@@ -1,5 +1,6 @@
 import "./style.css";
 import Three from "./model/three";
+import Background from "./model/background";
 
 const instance = new Three("gl");
 // instance.camera.position.set(0, 0, 5); // 设置位置
@@ -14,3 +15,7 @@ window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   instance.resizePlaneToFillScreen(plane);
 });
+
+// 生成背景
+const bg = new Background(plane);
+bg.transitionBg();

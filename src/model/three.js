@@ -49,7 +49,7 @@ export default class Three {
   createPlane() {
     const plane = new Mesh(
       new PlaneGeometry(1, 1),
-      new MeshBasicMaterial({ side: DoubleSide, color: 0xffffff })
+      new MeshBasicMaterial({ side: DoubleSide, color: 0x000000 })
     );
     this.scene.add(plane);
     return plane;
